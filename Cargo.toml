@@ -1,0 +1,16 @@
+[package]
+name = "summertail"
+version = "0.3.0-rc1"
+authors = ["Amanda McCann <amanda@technomancy.org>"]
+edition = "2018"
+license = "AGPL-3.0+"
+readme = "README.md"
+description = "Summarize your tail -f output, by reporting how many lines match regexes"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+regex = "1.5.4"
+chrono = "0.4.19"
+humantime = "2.1.0"
+anyhow = "1.0.53"
