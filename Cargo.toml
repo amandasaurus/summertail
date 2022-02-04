@@ -5,6 +5,9 @@ authors = ["Amanda McCann <amanda@technomancy.org>"]
 edition = "2018"
 license = "AGPL-3.0+"
 readme = "README.md"
+repository = "https://github.com/amandasaurus/summertail"
+homepage = "https://github.com/amandasaurus/summertail"
+documentation = "https://github.com/amandasaurus/summertail"
 description = "Summarize your tail -f output, by reporting how many lines match regexes"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
