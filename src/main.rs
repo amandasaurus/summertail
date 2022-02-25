@@ -12,8 +12,7 @@ use std::thread;
 use anyhow::Result;
 
 const BARS: [&str; 10] = [
-    // User doesn't want bars
-    "",
+    "", // User doesn't want bars
     "   ",
     " \u{2581}\u{258F}",
     " \u{2582}\u{258E}",
@@ -64,8 +63,15 @@ fn main() -> Result<()> {
 
     let args = std::env::args().skip(1).collect::<Vec<_>>();
     if args.len() < 2 {
-        eprintln!("Usage: {} DELAY REGEX1 REGEX2 ...", std::env::args().nth(0).unwrap());
-        eprintln!("Source code: {}", option_env!("CARGO_PKG_REPOSITORY").unwrap_or("non-cargo compilation, no CARGO_PKG_REPOSITORY"));
+        eprintln!(
+            "Usage: {} DELAY REGEX1 REGEX2 ...",
+            std::env::args().nth(0).unwrap()
+        );
+        eprintln!(
+            "Source code: {}",
+            option_env!("CARGO_PKG_REPOSITORY")
+                .unwrap_or("non-cargo compilation, no CARGO_PKG_REPOSITORY")
+        );
         return Ok(());
     }
     let (delay, args) = args.split_at(1);
