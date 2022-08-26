@@ -80,7 +80,7 @@ fn main() -> Result<()> {
     let delay = if let Ok(secs) = delay_str.parse::<f32>() {
         chrono::Duration::milliseconds((secs * 1000.).round() as i64)
     } else {
-        chrono::Duration::from_std(humantime::parse_duration(&delay_str)?)?
+        chrono::Duration::from_std(humantime::parse_duration(delay_str)?)?
     };
 
     let wait_between_prints = min(
@@ -125,7 +125,7 @@ fn main() -> Result<()> {
     thread::spawn(move || {
         let mut bytes = vec![];
         let mut stdin = BufReader::new(stdin);
-        while stdin.read_until('\x0A' as u8, &mut bytes).unwrap() > 0 {
+        while stdin.read_until(b'\x0A', &mut bytes).unwrap() > 0 {
             let line = String::from_utf8_lossy(&bytes);
             tx.send(line.to_string()).unwrap();
             bytes.clear();
@@ -147,7 +147,7 @@ fn main() -> Result<()> {
         now_local = chrono::offset::Local::now();
 
         if now_utc - time_of_last_newline >= delay {
-            write!(stdout, "\n").unwrap();
+            writeln!(stdout).unwrap();
 
             // clear counters
             for r in counters.iter_mut() {
@@ -235,7 +235,7 @@ fn main() -> Result<()> {
         stdout.flush().unwrap();
     }
 
-    write!(stdout, "\n").unwrap();
+    writeln!(stdout).unwrap();
     stdout.flush().unwrap();
 
     Ok(())

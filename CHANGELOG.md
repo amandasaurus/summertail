@@ -1,4 +1,4 @@
-# Unreleased
+# v0.3.0 (2022-08-17)
 
 * Print graphical representation of percentages with box characters, and time
   with clocks
